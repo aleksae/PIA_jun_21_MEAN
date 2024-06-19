@@ -1,0 +1,24 @@
+<p>{{nastavnik.ime}} {{nastavnik.prezime}}</p>
+<p>{{d.dat_date | date:'d.MM.y HH:mm'}}
+{{d.predmet}}
+{{d.sala}}</p>
+<br>
+<table >
+    <thead>
+        <tr>
+            <th>Datum i vreme</th>
+            <th>Predmet</th>
+            <th>Sala</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dd of dezurstva">
+            <td>{{dd.dat_date | date:'d.MM.y HH:mm'}}</td>
+            <td>{{dd.predmet}}</td>
+            <td>{{dd.sala}}</td>
+            <td ><button (click)="posalji(dd)">Posalji</button></td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="nazad()">Nazad</button>

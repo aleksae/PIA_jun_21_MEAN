@@ -1,0 +1,49 @@
+{{ulogovan.ime}} {{ulogovan.prezime}} <button (click)="logout()">Logout</button>
+<table >
+    <thead>
+        <tr>
+            <th>Datum i vreme</th>
+            <th>Predmet</th>
+            <th>Sala</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of dezurstva">
+            <td>{{d.dat_date | date:'d.MM.y HH:mm'}}</td>
+            <td>{{d.predmet}}</td>
+            <td>{{d.sala}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<select [(ngModel)]="izabran">
+    <option *ngFor="let n of nastavnici; let i=index" value="{{n.korisnickoIme}}" >{{n.ime}} {{n.prezime}}</option>
+</select>
+
+<div *ngIf="izabran">
+<table >
+    <thead>
+        <tr>
+
+            <th>Datum i vreme</th>
+            <th>Predmet</th>
+            <th>Sala</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of dezurstva_nastavnici[izabran]"
+        >
+       
+            <td *ngIf="poklapa_se(d)" style="background-color: yellow;">{{d.dat_date | date:'d.MM.y HH:mm'}}</td>
+            <td *ngIf="!poklapa_se(d)" class="">{{d.dat_date | date:'d.MM.y HH:mm'}}</td>
+            <td  *ngIf="poklapa_se(d)" style="background-color: yellow;">{{d.predmet}}</td>
+            <td *ngIf="!poklapa_se(d)" class="">{{d.predmet}}</td>
+            <td  *ngIf="poklapa_se(d)" style="background-color: yellow;">{{d.sala}}</td>
+            <td *ngIf="!poklapa_se(d)" class="">{{d.sala}}</td>
+            <td *ngIf="!poklapa_se(d)"><button (click)="zamena(d)">Zamena</button></td>
+        </tr>
+
+    </tbody>
+</table>
+</div>

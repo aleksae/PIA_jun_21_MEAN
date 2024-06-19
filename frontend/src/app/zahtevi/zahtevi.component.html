@@ -1,0 +1,17 @@
+<h4>Zahtevi</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Moj</th>
+            <th>Ponudjen</th>
+            <th>Ponudjac</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let z of zamene">
+          <td>{{z['dezurstvo_zeljeno'].dat_date | date:'d.M.YYYY HH:mm'}} / {{z['dezurstvo_zeljeno'].predmet}} / {{z['dezurstvo_zeljeno'].sala}}</td>
+          <td>{{z['dezurstvo_moje'].dat_date | date:'d.M.YYYY HH:mm'}} / {{z['dezurstvo_moje'].predmet}} / {{z['dezurstvo_moje'].sala}}</td>
+          <td>{{z['dezurstvo_moje'].nastavnik}}</td>
+        </tr>
+    </tbody>
+</table>
